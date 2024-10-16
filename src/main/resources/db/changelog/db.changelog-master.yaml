@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: your.name
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address1
+                  type: varchar(50)
+              - column:
+                  name: address2
+                  type: varchar(50)
+              - column:
+                  name: city
+                  type: varchar(30)
+        - addUniqueConstraint:
+            columnNames: name, address1
+            constraintName: uk_person_name_address1
+            deferrable: true
+            initiallyDeferred: true
+            tableName: person
