@@ -1,7 +1,6 @@
-package com.github.ricardobaumann.spring_boot_rest_template.services;
+package com.github.ricardobaumann.spring_boot_rest_template;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.ricardobaumann.spring_boot_rest_template.TestcontainersConfiguration;
 import com.github.ricardobaumann.spring_boot_rest_template.output.ResourceRef;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ Integration tests are meant to check if the whole endpoint stack works
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class PersonServiceIntegrationTest {
+class PersonControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

@@ -39,7 +39,7 @@ public class PersonController {
     @GetMapping("/{id}")
     public ResponseEntity<PersonPayload> findByID(@PathVariable UUID id) {
         /*
-        I know it's tempting to use the repository layer straight-away for reading operations, it can lead
+        I know it's tempting to use the repository layer straight-away for reading operations, but it can lead
         to a lot of refactorings if some business logic need to be introduced.
          */
         return personUseCases.findById(id)
