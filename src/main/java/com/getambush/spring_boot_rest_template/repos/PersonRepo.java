@@ -1,6 +1,6 @@
-package com.github.ricardobaumann.spring_boot_rest_template.repos;
+package com.getambush.spring_boot_rest_template.repos;
 
-import com.github.ricardobaumann.spring_boot_rest_template.entities.Person;
+import com.getambush.spring_boot_rest_template.entities.Person;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

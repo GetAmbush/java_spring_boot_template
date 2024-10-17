@@ -1,4 +1,4 @@
-package com.github.ricardobaumann.spring_boot_rest_template.entities;
+package com.getambush.spring_boot_rest_template.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

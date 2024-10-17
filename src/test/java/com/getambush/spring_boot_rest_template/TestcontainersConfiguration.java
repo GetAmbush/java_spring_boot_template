@@ -1,4 +1,4 @@
-package com.github.ricardobaumann.spring_boot_rest_template;
+package com.getambush.spring_boot_rest_template;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

@@ -1,7 +1,7 @@
-package com.github.ricardobaumann.spring_boot_rest_template;
+package com.getambush.spring_boot_rest_template;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.ricardobaumann.spring_boot_rest_template.output.ResourceRef;
+import com.getambush.spring_boot_rest_template.output.ResourceRef;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

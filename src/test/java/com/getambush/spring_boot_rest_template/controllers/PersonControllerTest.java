@@ -1,6 +1,6 @@
-package com.github.ricardobaumann.spring_boot_rest_template.controllers;
+package com.getambush.spring_boot_rest_template.controllers;
 
-import com.github.ricardobaumann.spring_boot_rest_template.usecases.PersonUseCases;
+import com.getambush.spring_boot_rest_template.usecases.PersonUseCases;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ class PersonControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-    
+
     /*
     This test only covers the static validations at the controller level,
     hence there is no need for an integration test setup

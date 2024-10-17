@@ -1,10 +1,10 @@
-package com.github.ricardobaumann.spring_boot_rest_template.services;
+package com.getambush.spring_boot_rest_template.services;
 
-import com.github.ricardobaumann.spring_boot_rest_template.entities.Person;
-import com.github.ricardobaumann.spring_boot_rest_template.exceptions.DuplicatedPersonException;
-import com.github.ricardobaumann.spring_boot_rest_template.inputs.PersonPayload;
-import com.github.ricardobaumann.spring_boot_rest_template.repos.PersonRepo;
-import com.github.ricardobaumann.spring_boot_rest_template.usecases.PersonUseCases;
+import com.getambush.spring_boot_rest_template.entities.Person;
+import com.getambush.spring_boot_rest_template.exceptions.DuplicatedPersonException;
+import com.getambush.spring_boot_rest_template.inputs.PersonPayload;
+import com.getambush.spring_boot_rest_template.repos.PersonRepo;
+import com.getambush.spring_boot_rest_template.usecases.PersonUseCases;
 import lombok.AllArgsConstructor;
 import lombok.experimental.Delegate;
 import org.springframework.stereotype.Service;

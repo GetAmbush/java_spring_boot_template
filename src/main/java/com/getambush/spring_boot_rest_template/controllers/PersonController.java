@@ -1,9 +1,9 @@
-package com.github.ricardobaumann.spring_boot_rest_template.controllers;
+package com.getambush.spring_boot_rest_template.controllers;
 
-import com.github.ricardobaumann.spring_boot_rest_template.entities.Person;
-import com.github.ricardobaumann.spring_boot_rest_template.inputs.PersonPayload;
-import com.github.ricardobaumann.spring_boot_rest_template.output.ResourceRef;
-import com.github.ricardobaumann.spring_boot_rest_template.usecases.PersonUseCases;
+import com.getambush.spring_boot_rest_template.entities.Person;
+import com.getambush.spring_boot_rest_template.inputs.PersonPayload;
+import com.getambush.spring_boot_rest_template.output.ResourceRef;
+import com.getambush.spring_boot_rest_template.usecases.PersonUseCases;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

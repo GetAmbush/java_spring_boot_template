@@ -1,4 +1,4 @@
-package com.github.ricardobaumann.spring_boot_rest_template;
+package com.getambush.spring_boot_rest_template;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Import;
 @SpringBootTest
 class SpringBootRestTemplateApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

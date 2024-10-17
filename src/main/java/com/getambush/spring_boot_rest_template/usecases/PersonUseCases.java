@@ -1,7 +1,7 @@
-package com.github.ricardobaumann.spring_boot_rest_template.usecases;
+package com.getambush.spring_boot_rest_template.usecases;
 
-import com.github.ricardobaumann.spring_boot_rest_template.entities.Person;
-import com.github.ricardobaumann.spring_boot_rest_template.inputs.PersonPayload;
+import com.getambush.spring_boot_rest_template.entities.Person;
+import com.getambush.spring_boot_rest_template.inputs.PersonPayload;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotNull;
 
