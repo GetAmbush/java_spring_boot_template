@@ -2,6 +2,7 @@ package com.github.ricardobaumann.spring_boot_rest_template;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.ricardobaumann.spring_boot_rest_template.output.ResourceRef;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -11,8 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /*
@@ -27,9 +27,14 @@ class PersonControllerIntegrationTest {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
+    private ResourceRef resourceRef;
 
-    @Test
-    void shouldPersistAndReturnValidPerson() throws Exception {
+    /*
+    Basic REST CRUD tests could even be generated with AI, or with
+    some annotation-based code generator
+     */
+    @BeforeEach
+    void setup() throws Exception {
         String createdResponse = mockMvc.perform(post("/people")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
@@ -43,14 +48,16 @@ class PersonControllerIntegrationTest {
                 ).andExpect(status().isCreated())
                 .andReturn().getResponse().getContentAsString();
 
-        ResourceRef resourceRef = objectMapper.readValue(createdResponse, ResourceRef.class);
+        resourceRef = objectMapper.readValue(createdResponse, ResourceRef.class);
+    }
 
-        String fetchResponse = mockMvc.perform(get("/people/{id}", resourceRef.id())
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-        ).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+    @Test
+    void shouldReturnValidPerson() throws Exception {
+        //When
+        String fetchResponse = fetchPerson();
 
         //Response json asserting can also be done with specific libraries, like JsonAssert
+        //Then
         assertThat(fetchResponse).isEqualToIgnoringWhitespace(
                 """
                         {
@@ -60,5 +67,42 @@ class PersonControllerIntegrationTest {
                         }
                         """
         );
+    }
+
+    private String fetchPerson() throws Exception {
+        return mockMvc.perform(get("/people/{id}", resourceRef.id())
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+    }
+
+    @Test
+    void shouldUpdatePerson() throws Exception {
+        //When
+        final String content = """
+                {
+                    "name": "test-person updated",
+                    "address1": "first address line updated",
+                    "address2": "second address line updated"
+                }
+                """;
+        mockMvc.perform(put("/people/{id}", resourceRef.id())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(content)
+        ).andExpect(status().isOk());
+
+        //Then
+        assertThat(fetchPerson()).isEqualToIgnoringWhitespace(content);
+    }
+
+    @Test
+    void shouldDeletePerson() throws Exception {
+        //Then
+        mockMvc.perform(delete("/people/{id}", resourceRef.id()))
+                .andExpect(status().isNoContent());
+
+        mockMvc.perform(get("/people/{id}", resourceRef.id()))
+                .andExpect(status().isNotFound());
     }
 }

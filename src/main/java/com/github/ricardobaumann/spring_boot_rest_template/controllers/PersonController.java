@@ -36,6 +36,15 @@ public class PersonController {
         return new ResourceRef(personUseCases.create(personPayload).getId());
     }
 
+    /*
+    PUT methods can also be implemented with JSON+PATCH
+     */
+    @PutMapping("/{id}")
+    public void updatePerson(@RequestBody @Valid PersonPayload personPayload,
+                             @PathVariable UUID id) {
+        personUseCases.update(personPayload, id);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<PersonPayload> findByID(@PathVariable UUID id) {
         /*
@@ -46,6 +55,12 @@ public class PersonController {
                 .map(this::toPayload)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable UUID id) {
+        personUseCases.deleteById(id);
     }
 
     private PersonPayload toPayload(Person person) {
